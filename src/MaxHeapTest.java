@@ -1,15 +1,7 @@
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.Assert.*;
 
 public class MaxHeapTest {
-    // homework
-
     @Test
     public void testAdd() {
         int[][] expected = {{2},
@@ -132,7 +124,4 @@ public class MaxHeapTest {
             assertTrue(heap.equal(expected[i]));
         }
     }
-
-
-
 }

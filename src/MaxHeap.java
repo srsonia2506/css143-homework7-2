@@ -9,44 +9,38 @@ public class MaxHeap implements Heap {
         size = 0;
     }
 
-    // build a heap based on data
-    // to be implemented in O(nlogn)
+    // build a heap based on data to be implemented in O(nlogn)
     public void MaxHeapLogN(Integer[] data) {
-        // homework
         for (Integer datum: data){
             add(datum);
         }
     }
 
-    // build a heap based on data
-    // to be implemented in O(n)
+    // build a heap based on data to be implemented in O(n)
     public void MaxHeapN(Integer[] data) {
-        // homework
         this.data = data.clone();
         size = data.length;
         int idx = (data.length-1-1)/2;
         for (int i = idx; i >= 0; i--){
-            heapifyDown(i);
+            heapifyPop(i);
         }
     }
 
     // add an item to the heap
     public boolean add(Integer item) {
-        // homework
         if (size == capacity){
             return false;
         }
         data[size] = item;
-        heapifyUp(size);
+        heapifyAdd(size);
         size++;
         return true;
     }
 
-    //helper
-    private void heapifyUp(int n){
+    private void heapifyAdd(int n){
         if (n != 0 && data[n] > data[(n-1)/2]) {
             swap(n, (n - 1) / 2);
-            heapifyUp((n-1)/2);
+            heapifyAdd((n-1)/2);
         }
     }
 
@@ -59,22 +53,20 @@ public class MaxHeap implements Heap {
 
     // return the max item in the heap
     public Integer get() {
-        // homework
         return data[0];
     }
 
     // remove the root item
     public Integer pop() {
-        // homework
         int result = data[0];
         data[0] = data[size-1];
         size--;
-        heapifyDown(0);
+        heapifyPop(0);
         return result;
     }
 
     //helper
-    private void heapifyDown(int n){
+    private void heapifyPop(int n){
         int biggest = n;
         int left = n*2+1; // child of n
         int right = n*2+2; // child of n
@@ -86,7 +78,7 @@ public class MaxHeap implements Heap {
         }
         if (biggest!= n){
             swap(biggest, n);
-            heapifyDown(biggest);
+            heapifyPop(biggest);
         }
     }
 
